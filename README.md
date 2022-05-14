@@ -15,3 +15,6 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 - install terraform cli
 - install nvim/vim
   - install all the needed dependencies
+
+# Kitty
+kitty looks for a config file in the OS config directories (usually `~/.config/kitty/kitty.conf`) but you can pass a specific path via the kitty `--config` option or use the `KITTY_CONFIG_DIRECTORY` environment variable.

@@ -1,0 +1,9 @@
+---
+
+- name: Perform initial setup
+  become: yes
+  import_tasks: install-dependencies.yaml
+
+- name: Setup Docker
+  become: yes
+  import_tasks: setup-docker.yaml

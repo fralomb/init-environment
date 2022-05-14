@@ -1,0 +1,7 @@
+---
+
+- name: Setup Environment
+  hosts: all
+  roles:
+    #- role: docker
+    - role: tools

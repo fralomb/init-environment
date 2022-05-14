@@ -1,0 +1,31 @@
+---
+- name: Ensure old Docker version are not installed
+  apt:
+    pkg:
+      - docker
+      - docker.io
+      - containerd
+      - docker-engine
+      - runc
+    state: absent
+
+- name: Ensure dependencies are installed
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - software-properties-common
+      - python3-pip
+
+- name: Add Docker offical GPG key
+  apt_key:
+    url: "{{ docker_gpg_url }}" 
+    state: present
+    keyring: "{{ docker_gpg_keyring }}"
+
+- name: Add Docker reporitory
+  apt_repository:
+    repo: "{{ docker_repository }}"
+    state: present
+    update_cache: yes

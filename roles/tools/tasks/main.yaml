@@ -1,11 +1,7 @@
 ---
 
-- name: Install kitty
-  import_tasks: install-kitty.yaml
-  become: yes
-  tags: [ install ]
+- name: Uninstall / Install kitty
+  import_tasks: kitty/main.yaml
 
-- name: Uninstall kitty
-  import_tasks: uninstall-kitty.yaml
-  become: yes
-  tags: [ uninstall ]
+- name: Uninstall / Install vim
+  import_tasks: vim/main.yaml

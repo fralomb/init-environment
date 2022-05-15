@@ -1,9 +1,27 @@
 ---
 
-- name: Perform initial setup
-  become: yes
-  import_tasks: install-dependencies.yaml
+- name: Check docker existence
+  shell: 'which docker'
+  register: docker
+  ignore_errors: yes
+  tags: always
 
-- name: Setup Docker
-  become: yes
-  import_tasks: setup-docker.yaml
+- name: Install docker
+  block:
+  - name: Perform initial setup
+    become: yes
+    import_tasks: install-dependencies.yaml
+
+  - name: Setup Docker
+    become: yes
+    import_tasks: setup-docker.yaml
+  when: docker.rc != 0
+  tags: [ install ]
+
+- name: Uninstall docker
+  block:
+  - name: Remove all packages
+    become: yes
+    import_tasks: uninstall-docker.yaml
+  when: docker.rc == 0
+  tags: [ uninstall ]

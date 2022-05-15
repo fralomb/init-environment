@@ -1,0 +1,19 @@
+---
+
+- name: Check kitty existence
+  shell: 'which kitty'
+  register: kitty
+  ignore_errors: yes
+  tags: always
+
+- name: Install kitty
+  import_tasks: install-kitty.yaml
+  become: yes
+  when: kitty.rc != 0
+  tags: [ install ]
+
+- name: Uninstall kitty
+  import_tasks: uninstall-kitty.yaml
+  become: yes
+  when: kitty.rc == 0
+  tags: [ uninstall ]

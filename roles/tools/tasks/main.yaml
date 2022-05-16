@@ -1,10 +1,10 @@
 ---
 
+- name: Uninstall / Install packages
+  import_tasks: packages/main.yaml
+
 - name: Uninstall / Install kitty
   import_tasks: kitty/main.yaml
-
-- name: Uninstall / Install vim
-  import_tasks: vim/main.yaml
 
 - name: Uninstall / Install neovim
   import_tasks: neovim/main.yaml

@@ -4,3 +4,9 @@ kitty_path: '{{ envs_path }}/.kitty'
 kitty_desktop_path: '{{ home_path }}/.local/share/applications'
 # neovim
 neovim_path: '{{ envs_path }}/.neovim'
+# packages to install
+packages_list:
+  - vim
+  - stow
+  - git
+  - zsh

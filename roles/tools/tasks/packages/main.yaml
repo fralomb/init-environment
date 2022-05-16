@@ -1,0 +1,17 @@
+---
+
+- name: Install all packages
+  package:
+    name: '{{ item }}'
+    state: latest
+  become: yes
+  loop: '{{ packages_list }}'
+  tags: [ install ]
+
+- name: Uninstall all packages
+  package:
+    name: '{{ item }}'
+    state: absent
+  become: yes
+  loop: '{{ packages_list }}'
+  tags: [ uninstall ]

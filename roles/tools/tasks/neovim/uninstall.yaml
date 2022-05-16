@@ -1,0 +1,14 @@
+---
+
+- name: Uninstall .neovim directory
+  file:
+    path: '{{ neovim_path }}'
+    state: absent
+
+- name: Remove neovim installed binaries
+  file:
+    path: '{{ item }}'
+    state: absent
+    whith_items:
+      - '/usr/local/bin/nvim'
+      - '/usr/local/share/nvim/'

@@ -1,0 +1,15 @@
+---
+- name: Create .neovim directory
+  file:
+    path: '{{ neovim_path }}'
+    state: directory
+
+- name: Copy neovim install script
+  copy:
+    src: install-neovim.sh
+    dest: '{{ neovim_path }}'
+    mode: '0711'
+  register: script_out
+
+- name: Install kitty from binaries
+  shell: '{{ script_out.dest }}'

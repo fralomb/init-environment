@@ -5,3 +5,6 @@
 
 - name: Uninstall / Install vim
   import_tasks: vim/main.yaml
+
+- name: Uninstall / Install neovim
+  import_tasks: neovim/main.yaml

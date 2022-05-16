@@ -1,0 +1,19 @@
+---
+
+- name: Check neovim existence
+  shell: 'which nvim'
+  register: neovim
+  ignore_errors: yes
+  tags: always
+
+- name: Install neovim
+  import_tasks: install.yaml
+  become: yes
+  when: neovim.rc != 0
+  tags: [ install ]
+
+- name: Uninstall neovim
+  import_tasks: uninstall.yaml
+  become: yes
+  when: neovim.rc == 0
+  tags: [ uninstall ]

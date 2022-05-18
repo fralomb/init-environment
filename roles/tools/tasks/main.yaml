@@ -3,6 +3,9 @@
 - name: Uninstall / Install packages
   import_tasks: packages/main.yaml
 
+- name: Uninstall / Install dotfiles
+  import_tasks: dotfiles/main.yaml
+
 - name: Uninstall / Install kitty
   import_tasks: kitty/main.yaml
 

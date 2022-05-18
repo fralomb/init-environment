@@ -1,0 +1,9 @@
+---
+
+- name: Install dotfiles repository
+  import_tasks: install.yaml
+  tags: [ install ]
+
+- name: Uninstall dotfiles repository
+  import_tasks: uninstall.yaml
+  tags: [ uninstall ]

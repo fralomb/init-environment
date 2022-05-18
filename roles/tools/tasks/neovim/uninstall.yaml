@@ -5,10 +5,16 @@
     path: '{{ neovim_path }}'
     state: absent
 
+- name: Uninstall all dependencies
+  apt:
+    pkg: '{{ neovim_deps_list }}'
+    state: absent
+    update_cache: yes
+
 - name: Remove neovim installed binaries
   file:
     path: '{{ item }}'
     state: absent
-    whith_items:
-      - '/usr/local/bin/nvim'
-      - '/usr/local/share/nvim/'
+  loop:
+  - '/usr/local/bin/nvim'
+  - '/usr/local/share/nvim/'

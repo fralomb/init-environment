@@ -19,6 +19,14 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 - install kubernetes
 - install zsh
 
+# Main
+To install all components:
+`ansible-playbook -i inventory/ playbook.yaml --ask-become-pass --tags install`
+
+To uninstall all components:
+`ansible-playbook -i inventory/ playbook.yaml --ask-become-pass --tags uninstall`
+
+
 # Docker 
 Installation [steps](https://docs.docker.com/engine/install/ubuntu/) for ubuntu
 
@@ -32,3 +40,7 @@ Kitty looks for a config file in the OS config directories (usually `~/.config/k
 2. `git clone https://github.com/neovim/neovim`
 3. `cd neovim && git checkout stable && make -j4`
 4. `sudo make install` => Default install location in `/user/local`
+
+# Zsh
+To change shell:
+`chsh -s /bin/zsh`

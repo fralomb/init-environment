@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 LOCAL=$(dirname "$0")
 HOME="$1"

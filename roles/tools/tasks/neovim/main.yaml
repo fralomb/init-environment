@@ -8,12 +8,12 @@
 
 - name: Install neovim
   import_tasks: install.yaml
-  become: yes
   when: neovim.rc != 0
+  become: yes
   tags: [ install ]
 
 - name: Uninstall neovim
   import_tasks: uninstall.yaml
-  become: yes
   when: neovim.rc == 0
+  become: yes
   tags: [ uninstall ]

@@ -1,0 +1,12 @@
+---
+
+- name: Git clone .dotfiles repository
+  git:
+    repo: 'https://github.com/fralomb/.dotfiles'
+    dest: '{{ dotfiles_path }}'
+    version: dotfiles-reorg
+ 
+- name: Install .dotfiles in home
+  shell: './install ubuntu'
+  args:
+    chdir: '{{ dotfiles_path }}'

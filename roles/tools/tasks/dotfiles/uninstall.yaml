@@ -1,0 +1,11 @@
+---
+
+- name: Uninstall .dotfiles from home
+  shell: './uninstall ubuntu'
+  args:
+    chdir: '{{ dotfiles_path }}'
+
+- name: Uninstall .dotfiles repository
+  file:
+    path: '{{ dotfiles_path }}'
+    state: absent

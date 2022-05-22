@@ -1,6 +1,6 @@
 ---
 
-- name: Install all packages
+- name: '[{{ submodule }}] Install all packages'
   apt:
     pkg: '{{ packages_list }}'
     state: latest
@@ -8,7 +8,7 @@
   become: yes
   tags: [ install ]
 
-- name: Uninstall all packages
+- name: '[{{ submodule }}] Uninstall all packages'
   apt:
     pkg: '{{ packages_list }}'
     state: absent

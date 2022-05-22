@@ -1,15 +1,15 @@
 ---
 
-- name: Uninstall .kitty directory
+- name: '[{{ submodule }}] Uninstall .kitty directory'
   file:
     path: '{{ kitty_path }}'
     state: absent
 
-- name: Remove kitty binary
+- name: '[{{ submodule }}] Remove kitty binary'
   file:
     path: '/usr/local/bin/kitty'
     state: absent
 
-- name: Uninstall kitty Desktop integration
+- name: '[{{ submodule }}] Uninstall kitty Desktop integration'
   shell: 'rm {{ kitty_desktop_path }}/kitty*.desktop'
   ignore_errors: yes

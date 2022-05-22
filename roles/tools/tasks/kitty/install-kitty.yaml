@@ -1,15 +1,15 @@
 ---
-- name: Create .kitty directory
+- name: '[{{ submodule }}] Create .kitty directory'
   file:
     path: '{{ kitty_path }}'
     state: directory
 
-- name: Copy kitty install script
+- name: '[{{ submodule }}] Copy kitty install script'
   copy:
     src: install-kitty.sh
     dest: '{{ kitty_path }}'
     mode: '0711'
   register: script_out
 
-- name: Install kitty from binaries
+- name: '[{{ submodule }}] Install kitty from binaries'
   shell: '{{ script_out.dest }} {{ home_path }} {{ kitty_desktop_path }}'

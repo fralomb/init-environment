@@ -1,17 +1,17 @@
 ---
 
-- name: Uninstall .neovim directory
+- name: '[{{ submodule }}] Uninstall .neovim directory'
   file:
     path: '{{ neovim_path }}'
     state: absent
 
-- name: Uninstall all dependencies
+- name: '[{{ submodule }}] Uninstall all dependencies'
   apt:
     pkg: '{{ neovim_deps_list }}'
     state: absent
     update_cache: yes
 
-- name: Remove neovim installed binaries
+- name: '[{{ submodule }}] Remove neovim installed binaries'
   file:
     path: '{{ item }}'
     state: absent

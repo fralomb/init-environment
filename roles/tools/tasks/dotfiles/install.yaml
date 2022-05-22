@@ -1,12 +1,22 @@
 ---
 
-- name: Git clone .dotfiles repository
+- name: '[{{ submodule }}] Install all dependencies'
+  apt:
+    pkg: '{{ dotfiles_deps_list }}'
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: '[{{ submodule }}] Git clone .dotfiles repository'
   git:
-    repo: 'https://github.com/fralomb/.dotfiles'
+    repo: 'git@github.com:fralomb/.dotfiles.git'
+    accept_hostkey: yes
+    ssh_opts: '-o StrictHostKeyChecking=no'
     dest: '{{ dotfiles_path }}'
     version: dotfiles-reorg
+    single_branch: yes
  
-- name: Install .dotfiles in home
+- name: '[{{ submodule }}] Install .dotfiles in home'
   shell: './install ubuntu'
   args:
     chdir: '{{ dotfiles_path }}'

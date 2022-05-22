@@ -1,11 +1,18 @@
 ---
 
-- name: Uninstall .dotfiles from home
+- name: '[{{ submodule }}] Uninstall .dotfiles from home'
   shell: './uninstall ubuntu'
   args:
     chdir: '{{ dotfiles_path }}'
+    
+- name: '[{{ submodule }}] Uninstall all dependencies'
+  apt:
+    pkg: '{{ dotfiles_deps_list }}'
+    state: absent
+    update_cache: yes
+  become: yes
 
-- name: Uninstall .dotfiles repository
+- name: '[{{ submodule }}] Uninstall .dotfiles repository'
   file:
     path: '{{ dotfiles_path }}'
     state: absent

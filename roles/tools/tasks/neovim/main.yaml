@@ -1,18 +1,18 @@
 ---
 
-- name: Check neovim existence
+- name: '[{{ submodule }}] Check neovim existence'
   shell: 'which nvim'
   register: neovim
   ignore_errors: yes
   tags: always
 
-- name: Install neovim
+- name: '[{{ submodule }}] Install neovim'
   import_tasks: install.yaml
   when: neovim.rc != 0
   become: yes
   tags: [ install ]
 
-- name: Uninstall neovim
+- name: '[{{ submodule }}] Uninstall neovim'
   import_tasks: uninstall.yaml
   when: neovim.rc == 0
   become: yes

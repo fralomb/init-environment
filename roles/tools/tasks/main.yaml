@@ -2,12 +2,20 @@
 
 - name: Uninstall / Install packages
   import_tasks: packages/main.yaml
+  vars:
+    submodule: packages
 
 - name: Uninstall / Install dotfiles
   import_tasks: dotfiles/main.yaml
+  vars:
+    submodule: dotfiles
 
 - name: Uninstall / Install kitty
   import_tasks: kitty/main.yaml
+  vars:
+    submodule: kitty
 
 - name: Uninstall / Install neovim
   import_tasks: neovim/main.yaml
+  vars:
+    submodule: neovim

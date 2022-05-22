@@ -1,5 +1,7 @@
 ---
 # dotfiles repository
+dotfiles_deps_list:
+  - stow
 dotfiles_path: '{{ envs_path }}/.dotfiles'
 # kitty
 kitty_path: '{{ envs_path }}/.kitty'
@@ -19,10 +21,11 @@ neovim_deps_list:
   - unzip
   - curl
   - doxygen
+neovim_version: stable
 # other packages to install
 packages_list:
   - vim
-  - stow
   - git
+  - curl
   - zsh
-  - zsh-completions
+#  - zsh-completions

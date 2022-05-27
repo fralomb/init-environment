@@ -9,6 +9,7 @@
     pkg: '{{ neovim_deps_list }}'
     state: latest
     update_cache: yes
+  become: yes
 
 - name: '[{{ submodule }}] Git clone neovim official repository'
   git:
@@ -28,3 +29,4 @@
   shell: '{{ script_out.dest }}'
   args:
     chdir: '{{ neovim_path }}/neovim_official'
+  become: yes

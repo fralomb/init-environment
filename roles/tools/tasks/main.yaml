@@ -19,3 +19,8 @@
   import_tasks: neovim/main.yaml
   vars:
     submodule: neovim
+
+- name: Uninstall / Install zsh
+  import_tasks: zsh/main.yaml
+  vars:
+    submodule: zsh

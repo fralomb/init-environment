@@ -1,0 +1,9 @@
+---
+
+- name: '[{{ submodule }}] Install zsh'
+  import_tasks: install.yaml
+  tags: [ install ]
+
+- name: '[{{ submodule }}] Uninstall zsh'
+  import_tasks: uninstall.yaml
+  tags: [ uninstall ]

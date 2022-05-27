@@ -17,6 +17,6 @@
     single_branch: yes
  
 - name: '[{{ submodule }}] Install .dotfiles in home'
-  shell: './install ubuntu'
+  shell: './symlinks install ubuntu'
   args:
     chdir: '{{ dotfiles_path }}'

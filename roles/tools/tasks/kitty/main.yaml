@@ -8,12 +8,10 @@
 
 - name: '[{{ submodule }}] Install kitty'
   import_tasks: install-kitty.yaml
-  become: yes
   when: kitty.rc != 0
   tags: [ install ]
 
 - name: '[{{ submodule }}] Uninstall kitty'
   import_tasks: uninstall-kitty.yaml
-  become: yes
   when: kitty.rc == 0
   tags: [ uninstall ]

@@ -1,10 +1,16 @@
 ---
 
+- name: '[{{ submodule }}] Check if directory still exist'
+  stat:
+    path: '{{ dotfiles_path }}'
+  register: dir_details
+
 - name: '[{{ submodule }}] Uninstall .dotfiles from home'
-  shell: './uninstall ubuntu'
+  shell: './symlinks uninstall ubuntu'
   args:
     chdir: '{{ dotfiles_path }}'
-    
+  when: dir_details.stat.exists
+
 - name: '[{{ submodule }}] Uninstall all dependencies'
   apt:
     pkg: '{{ dotfiles_deps_list }}'

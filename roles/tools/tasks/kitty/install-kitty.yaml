@@ -13,3 +13,4 @@
 
 - name: '[{{ submodule }}] Install kitty from binaries'
   shell: '{{ script_out.dest }} {{ home_path }} {{ kitty_desktop_path }}'
+  become: yes

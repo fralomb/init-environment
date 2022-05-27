@@ -22,10 +22,13 @@ neovim_deps_list:
   - curl
   - doxygen
 neovim_version: stable
+# zsh
+zsh_deps_list:
+  - zsh
+  - fzf
+#  - zsh-completions
 # other packages to install
 packages_list:
   - vim
   - git
   - curl
-  - zsh
-#  - zsh-completions

@@ -1,0 +1,16 @@
+---
+
+- name: '[{{ submodule }}] Install all dependencies'
+  apt:
+    pkg: '{{ zsh_deps_list }}'
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: '[{{ submodule }}] Switch shell'
+  shell: 'chsh -s $(which zsh)'
+  become: yes
+
+- name: '[{{ submodule }}] Switch to zsh console'
+  debug:
+    msg: '[ WARNING ] - Log out from your accout and log back in!'

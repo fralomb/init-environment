@@ -1,0 +1,18 @@
+---
+
+- name: Uninstall the Docker Engine, CLI, Containerd, and Docker Compose packages
+  apt:
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose-plugin
+    state: absent
+
+- name: Remove images, containers, volumes, etc..
+  file:
+    path: '{{ item }}'
+    state: absent
+    whith_items:
+      - '/var/lib/docker'
+      - '/var/lib/containerd'

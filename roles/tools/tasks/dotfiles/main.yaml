@@ -1,0 +1,9 @@
+---
+
+- name: '[{{ submodule }}] Install dotfiles repository'
+  import_tasks: install.yaml
+  tags: [ install ]
+
+- name: '[{{ submodule }}] Uninstall dotfiles repository'
+  import_tasks: uninstall.yaml
+  tags: [ uninstall ]

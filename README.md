@@ -15,3 +15,32 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 - install terraform cli
 - install nvim/vim
   - install all the needed dependencies
+- install kitty
+- install kubernetes
+- install zsh
+
+# Main
+To install all components:
+`ansible-playbook -i inventory/ playbook.yaml --ask-become-pass --tags install`
+
+To uninstall all components:
+`ansible-playbook -i inventory/ playbook.yaml --ask-become-pass --tags uninstall`
+
+
+# Docker 
+Installation [steps](https://docs.docker.com/engine/install/ubuntu/) for ubuntu
+
+# Kitty
+Documentation [HERE](https://sw.kovidgoyal.net/kitty/overview)
+
+Kitty looks for a config file in the OS config directories (usually `~/.config/kitty/kitty.conf`) but you can pass a specific path via the kitty `--config` option or use the `KITTY_CONFIG_DIRECTORY` environment variable.
+
+# Neovim
+1. Install [requirements](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites)
+2. `git clone https://github.com/neovim/neovim`
+3. `cd neovim && git checkout stable && make -j4`
+4. `sudo make install` => Default install location in `/user/local`
+
+# Zsh
+To change shell:
+`chsh -s /bin/zsh`

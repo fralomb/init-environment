@@ -1,0 +1,32 @@
+---
+- name: '[{{ submodule }}] Create .neovim directory'
+  file:
+    path: '{{ neovim_path }}'
+    state: directory
+
+- name: '[{{ submodule }}] Install all dependencies'
+  apt:
+    pkg: '{{ neovim_deps_list }}'
+    state: latest
+    update_cache: yes
+  become: yes
+
+- name: '[{{ submodule }}] Git clone neovim official repository'
+  git:
+    repo: 'https://github.com/neovim/neovim'
+    dest: '{{ neovim_path }}/neovim_official'
+    version: '{{ neovim_version }}'
+    single_branch: yes
+
+- name: '[{{ submodule }}] Copy neovim install script'
+  copy:
+    src: install-neovim.sh
+    dest: '{{ neovim_path }}'
+    mode: '0711'
+  register: script_out
+
+- name: '[{{ submodule }}] Install neovim from binaries'
+  shell: '{{ script_out.dest }}'
+  args:
+    chdir: '{{ neovim_path }}/neovim_official'
+  become: yes

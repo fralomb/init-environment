@@ -1,0 +1,17 @@
+---
+
+- name: '[{{ submodule }}] Check kitty existence'
+  shell: 'which kitty'
+  register: kitty
+  ignore_errors: yes
+  tags: always
+
+- name: '[{{ submodule }}] Install kitty'
+  import_tasks: install-kitty.yaml
+  when: kitty.rc != 0
+  tags: [ install ]
+
+- name: '[{{ submodule }}] Uninstall kitty'
+  import_tasks: uninstall-kitty.yaml
+  when: kitty.rc == 0
+  tags: [ uninstall ]

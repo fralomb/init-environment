@@ -1,0 +1,16 @@
+---
+
+- name: '[{{ submodule }}] Switch back to bash console'
+  shell: 'chsh -s $(which bash)'
+  become: yes
+
+- name: '[{{ submodule }}] Switch back to bash console'
+  debug:
+    msg: '[ WARNING ] - Log out from your accout and log back in!'
+
+- name: '[{{ submodule }}] Uninstall all dependencies'
+  apt:
+    pkg: '{{ zsh_deps_list }}'
+    state: absent
+    update_cache: yes
+  become: yes

@@ -1,0 +1,6 @@
+[target]
+localhost
+
+[target:vars]
+ansible_connection=local
+home_path=/home/francesco

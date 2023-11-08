@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Install all the dependencies through ansible playbook
+#  - vim
+#  - neovim
+#  - stow
+#  - zsh
+#  - tmux
+#  - ansible
+
+## NEED TO LAUNCH WITH SUDO
+apt-get update
+apt-get install --yes software-properties-common
+add-apt-repository --yes --update ppa:ansible/ansible
+apt-get install --yes ansible

@@ -1,0 +1,17 @@
+---
+
+- name: '[{{ submodule }}] Install all packages'
+  apt:
+    pkg: '{{ packages_list }}'
+    state: latest
+    update_cache: yes
+  become: yes
+  tags: [ install ]
+
+- name: '[{{ submodule }}] Uninstall all packages'
+  apt:
+    pkg: '{{ packages_list }}'
+    state: absent
+    update_cache: yes
+  become: yes
+  tags: [ uninstall ]
